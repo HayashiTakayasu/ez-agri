@@ -1,0 +1,101 @@
+#!/bin/bash
+
+#for Raspbian jessie,buster <= pi4 2020/03/11 update by Takayasu Hayashi
+
+#run at_first (user: "pi")
+
+#sudo raspi-config 
+sudo apt -y update
+sudo apt -y dist-upgrade
+sudo apt -y autoclean
+
+sudo apt-get -y update
+sudo apt-get -y upgrade
+
+sudo apt-get -y install build-essential cpp gcc
+sudo apt-get -y install git
+sudo apt-get -y install curl
+sudo apt-get -y install zlib1g-dev
+sudo apt-get -y install libreadline6-dev
+sudo apt-get -y install obconf
+sudo apt-get -y install libyaml-dev
+sudo apt-get -y install libssl-dev
+sudo apt-get -y install redis-server
+sudo apt-get -y install snmp
+sudo apt-get -y install sysv-rc-conf
+sudo apt-get -y install ffmpeg
+sudo apt-get -y install libav-tools
+sudo apt-get -y install libmagickwand-dev
+sudo apt-get -y install imagemagick
+sudo apt-get -y install gnuplot
+
+sudo apt-get -y install motion gzip
+
+sudo apt-get -y install x11vnc
+
+sudo apt-get -y install libsqlite3-dev
+sudo apt-get -y install sqlite3
+sudo apt-get -y install redis
+
+sudo apt-get -y install fonts-vlgothic
+sudo ln -sf /usr/share/fonts/truetype/vlgothic /usr/share/fonts/vlgothic;
+
+sudo apt-get -y install python-dev
+sudo apt-get -y install python3-dev
+sudo apt-get -y install python3-pip
+
+sudo apt-get -y install ruby-dev
+
+#set libreoffice <tools-option>set locale.
+sudo apt-get -y install libreoffice-l10n-ja
+
+sudo apt -y install lxterminal
+
+#For ibus-mozc RUN, raspi-config and set locale to JAPANESE  ,UTF-8
+sudo apt-get install -y ibus-mozc
+
+#2020/03/19 add Docker
+curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker pi
+
+cd ~/.config
+mkdir autostart
+cd autostart
+wget agripc.org/old_files/x11vnc.desktop
+sudo chmod 755 x11vnc.desktop 
+wget agripc.org/old_files/run_ma.desktop
+sudo chmod 755 run_ma.desktop 
+
+cd ~
+mkdir -p .rvm/bin
+cd .rvm/bin
+ln -s /usr/bin/ruby
+cd ~
+
+#for 4ch USBIO-Relay board , SUPER4
+#wet agripc.org/develop/pi/libftd2xx.so.1.1.12
+#mv libftd2xx.so.1.1.12 libftd2xx.so
+#sudo cp libftd2xx.so /usr/lib/
+
+
+sudo pip3 install pyephem
+sudo pip3 install pyserial
+sudo pip3 install numpy
+
+sudo apt-get -y install tk-dev
+sudo apt-get -y install python3-tk
+sudo apt-get -y install python3-cairocffi
+sudo apt-get -y install python3-matplotlib
+
+sudo apt-get -y install brasero
+
+sudo gem install agri-controller
+sudo gem install gruff
+sudo gem install redis
+sudo gem install mail
+
+
+sudo apt-get clean
+sudo apt-get autoclean
+
+# Raspi_mark>preferences>Openbox_Configuration_Manager>Desktops>Number of desktops==4
