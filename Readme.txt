@@ -3,7 +3,7 @@
 cd `dirname $0`
 
 #./db/redis-server ./db/redis.conf &
-redis-server ./db/redis.conf &
+redis-server redis.conf &
 sleep 5
 
 cd ./redis
