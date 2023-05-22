@@ -1,12 +1,10 @@
 #!/bin/sh
-#cd /home/agri/Desktop/ma
 cd `dirname $0`
 
-#./db/redis-server ./db/redis.conf &
 redis-server redis.conf &
 sleep 5
 
-cd ./redis
+cd ./io
 lxterminal -e /home/pi/.rvm/bin/ruby numato_server.rb &
 sleep 5
 cd -
